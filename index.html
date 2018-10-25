@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Size Select Test</title>
+  <style>
+    #card{
+      background: #000;
+      color: aliceblue;
+      font-size: 3em;
+      margin: 5px;
+      padding: 3em 0;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .small{ width: 25% }
+    .medium{ width: 33% }
+    .large{ width: 50% }
+    .extralarge{ width: 100% }
+  </style>
+</head>
+<body>
+  <input id="sizing" type="range" min="0" max="3" steps="3" value="0">
+  <div id="card" class="small">Card</div>
+
+  <script>
+    var sizer = document.getElementById('sizing')
+    var sizeSelected = sizer.value
+    var sizeName = {
+      small: false,
+      medium: false,
+      large: false,
+      xlarge: false,
+    }
+
+    sizer.addEventListener('input',function(){
+      console.log("Input value = ",sizer.value)
+      switch(sizer.value){
+        case '1': console.log('Case 1 fired!'); sizeName = { small:false, medium:true, large:false, xlarge:false }; break;
+        case '2': console.log('Case 2 fired!'); sizeName = { small:false, medium:false, large:true, xlarge:false }; break;
+        case '3': console.log('Case 3 fired!'); sizeName = { small:false, medium:false, large:false, xlarge:true }; break;
+        default: console.log('Default fired!'); sizeName = { small:true, medium:false, large:false, xlarge:false };
+      }
+      return sizeName
+    })
+
+  </script>
+</body>
+</html>
